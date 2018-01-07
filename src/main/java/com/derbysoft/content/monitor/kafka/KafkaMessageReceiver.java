@@ -41,6 +41,7 @@ public class KafkaMessageReceiver implements Runnable {
         checkArgument(StringUtils.isNotBlank(topic.getName()), "empty topic name");
         checkArgument(!Objects.isNull(kafkaService), "null object kafkaService");
         String configs = topic.getConfigs();
+        checkArgument(StringUtils.isNotBlank(configs), "empty kafka consumer config for topic %s", topic.getName());
         Map configMap = new Gson().fromJson(configs, Map.class);
         KafkaMessageReceiver messageReceiver = new KafkaMessageReceiver();
         messageReceiver.setTopic(topic);
