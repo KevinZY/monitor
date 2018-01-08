@@ -1,9 +1,9 @@
 CREATE TABLE topic (
   id        BIGINT(20)   AUTO_INCREMENT PRIMARY KEY,
   name      VARCHAR(20) NOT NULL UNIQUE,
-  active    CHAR(1)     NOT NULL,
+  active    CHAR(1)     NOT NULL DEFAULT 1,
   processor VARCHAR(255) DEFAULT NULL,
-  configs   LONGTEXT NOT NULL ,
+  configs   LONGTEXT DEFAULT NULL ,
   pollInterval int(11) DEFAULT NULL
 )
   ENGINE = InnoDB

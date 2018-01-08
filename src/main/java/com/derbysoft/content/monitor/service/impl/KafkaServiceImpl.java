@@ -23,12 +23,34 @@ public class KafkaServiceImpl implements KafkaService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public Topic topic(long id) {
         return topicDao.uniqueById(id);
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<Topic> topics() {
         return topicDao.all();
+    }
+
+    @Override
+    public long add(Topic topic) {
+        return topicDao.add(topic);
+    }
+
+    @Override
+    public void update(Topic topic) {
+
+    }
+
+    @Override
+    public Topic delete(Topic topic) {
+        return null;
+    }
+
+    @Override
+    public Topic delete(long id) {
+        return null;
     }
 }

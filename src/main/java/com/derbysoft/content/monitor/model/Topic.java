@@ -3,13 +3,14 @@ package com.derbysoft.content.monitor.model;
 /**
  * Created by zhangyang on 2018/1/6.
  */
+
 public class Topic {
     private long id;
     private String name;
-    private boolean active;
+    private boolean active = true;
     private String processor;
     private String configs;
-    private long pollInterval;
+    private long pollInterval = 100;
 
     public long getId() {
         return id;
