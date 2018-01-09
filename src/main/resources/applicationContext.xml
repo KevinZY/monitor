@@ -7,7 +7,7 @@
     <context:property-placeholder location="classpath:config.properties" ignore-unresolvable="true"/>
 
     <context:component-scan base-package="com.derbysoft.content.monitor.service"/>
-    <!--<context:component-scan base-package="com.derbysoft.content.monitor.dao"/>-->
+    <!--<context:component-scan base-packacom.derbysoft.content.monitor.mapperper.dao"/>-->
     <context:component-scan base-package="com.derbysoft.content.monitor.jobs"/>
 
 
@@ -35,11 +35,11 @@
 
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
-        <property name="mapperLocations" value="classpath:com/derbysoft/content/monitor/dao/**/*.xml"/>
+        <property name="mapperLocations" value="classpath:com/derbysoft/content/monitor/mapper/**/*.xml"/>
     </bean>
 
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.derbysoft.content.monitor.dao"/>
+        <property name="basePackage" value="com.derbysoft.content.monitor.mapper"/>
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
     </bean>
 

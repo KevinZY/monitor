@@ -1,6 +1,6 @@
 package com.derbysoft.content.monitor.service.impl;
 
-import com.derbysoft.content.monitor.dao.TopicDao;
+import com.derbysoft.content.monitor.mapper.TopicMapper;
 import com.derbysoft.content.monitor.model.Topic;
 import com.derbysoft.content.monitor.service.KafkaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,28 +15,28 @@ import java.util.List;
 @Transactional
 @Service
 public class KafkaServiceImpl implements KafkaService {
-    private final TopicDao topicDao;
+    private final TopicMapper topicMapper;
 
     @Autowired
-    public KafkaServiceImpl(TopicDao topicDao) {
-        this.topicDao = topicDao;
+    public KafkaServiceImpl(TopicMapper topicMapper) {
+        this.topicMapper = topicMapper;
     }
 
     @Override
     @Transactional(readOnly = true)
     public Topic topic(long id) {
-        return topicDao.uniqueById(id);
+        return topicMapper.uniqueById(id);
     }
 
     @Override
     @Transactional(readOnly = true)
     public List<Topic> topics() {
-        return topicDao.all();
+        return topicMapper.all();
     }
 
     @Override
     public long add(Topic topic) {
-        return topicDao.add(topic);
+        return topicMapper.add(topic);
     }
 
     @Override
