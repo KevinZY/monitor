@@ -4,6 +4,7 @@ import com.derbysoft.content.monitor.kafka.KafkaMessageReceiver;
 import com.derbysoft.content.monitor.model.Topic;
 import com.derbysoft.content.monitor.service.KafkaService;
 import org.apache.commons.collections.CollectionUtils;
+import org.apache.kafka.common.TopicPartition;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -36,6 +37,9 @@ public class KafkaPollJob {
     @PostConstruct
     public void onStart() {
         List<Topic> topics = kafkaService.topics();
+        Topic topic1 = new Topic();
+        topic1.setName("test");
+        kafkaService.add(topic1);
         if (CollectionUtils.isEmpty(topics)) return;
         executorService = Executors.newFixedThreadPool(topics.size());
         topics.forEach(topic -> {

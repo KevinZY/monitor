@@ -15,7 +15,7 @@ import java.util.List;
 @Transactional
 @Service
 public class KafkaServiceImpl implements KafkaService {
-    final TopicDao topicDao;
+    private final TopicDao topicDao;
 
     @Autowired
     public KafkaServiceImpl(TopicDao topicDao) {
